@@ -73,10 +73,6 @@ Structured JSON + Analytics
 
 * Lovable Cloud Database & Storage
 
-### Deployment
-
-* Hosted on Lovable Cloud
-
 ---
 
 ## ⚙️ How It Works
@@ -135,12 +131,25 @@ Upload Invoice → AI Processing → JSON Extraction → Save → Analytics Dash
 ## 📂 Test Data
 
 Sample invoices used for testing are included.
+{
+  "currency": "USD",
+  "due_date": null,
+  "raw_text": "E. Jagan Mohan Reddy",
+  "subtotal": null,
+  "line_items": [],
+  "tax_amount": null,
+  "vendor_name": "E. Jagan Mohan Reddy",
+  "invoice_date": null,
+  "total_amount": null,
+  "invoice_number": null,
+  "confidence_score": 0.6
+}
 
 ---
 
 ## 🌐 Live Demo
 
-👉 (Paste your Lovable app link here)
+👉 https://insightful-invoices.vercel.app/
 
 ---
 

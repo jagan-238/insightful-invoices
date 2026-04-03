@@ -14,7 +14,172 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      invoice_formats: {
+        Row: {
+          avg_confidence: number | null
+          created_at: string
+          field_mapping: Json | null
+          format_hash: string
+          id: string
+          sample_prompt: string | null
+          times_seen: number | null
+          updated_at: string
+          vendor_name: string | null
+        }
+        Insert: {
+          avg_confidence?: number | null
+          created_at?: string
+          field_mapping?: Json | null
+          format_hash: string
+          id?: string
+          sample_prompt?: string | null
+          times_seen?: number | null
+          updated_at?: string
+          vendor_name?: string | null
+        }
+        Update: {
+          avg_confidence?: number | null
+          created_at?: string
+          field_mapping?: Json | null
+          format_hash?: string
+          id?: string
+          sample_prompt?: string | null
+          times_seen?: number | null
+          updated_at?: string
+          vendor_name?: string | null
+        }
+        Relationships: []
+      }
+      invoice_line_items: {
+        Row: {
+          amount: number | null
+          created_at: string
+          description: string | null
+          id: string
+          invoice_id: string
+          quantity: number | null
+          unit_price: number | null
+        }
+        Insert: {
+          amount?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          invoice_id: string
+          quantity?: number | null
+          unit_price?: number | null
+        }
+        Update: {
+          amount?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          invoice_id?: string
+          quantity?: number | null
+          unit_price?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invoice_line_items_invoice_id_fkey"
+            columns: ["invoice_id"]
+            isOneToOne: false
+            referencedRelation: "invoices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      invoices: {
+        Row: {
+          confidence_score: number | null
+          created_at: string
+          currency: string | null
+          due_date: string | null
+          duplicate_of: string | null
+          error_message: string | null
+          file_name: string
+          file_path: string
+          file_type: string
+          file_url: string | null
+          format_hash: string | null
+          id: string
+          invoice_date: string | null
+          invoice_number: string | null
+          is_duplicate: boolean | null
+          raw_extracted_json: Json | null
+          raw_extracted_text: string | null
+          status: string
+          subtotal: number | null
+          tax_amount: number | null
+          total_amount: number | null
+          updated_at: string
+          user_id: string
+          vendor_name: string | null
+          vendor_normalized: string | null
+        }
+        Insert: {
+          confidence_score?: number | null
+          created_at?: string
+          currency?: string | null
+          due_date?: string | null
+          duplicate_of?: string | null
+          error_message?: string | null
+          file_name: string
+          file_path: string
+          file_type?: string
+          file_url?: string | null
+          format_hash?: string | null
+          id?: string
+          invoice_date?: string | null
+          invoice_number?: string | null
+          is_duplicate?: boolean | null
+          raw_extracted_json?: Json | null
+          raw_extracted_text?: string | null
+          status?: string
+          subtotal?: number | null
+          tax_amount?: number | null
+          total_amount?: number | null
+          updated_at?: string
+          user_id: string
+          vendor_name?: string | null
+          vendor_normalized?: string | null
+        }
+        Update: {
+          confidence_score?: number | null
+          created_at?: string
+          currency?: string | null
+          due_date?: string | null
+          duplicate_of?: string | null
+          error_message?: string | null
+          file_name?: string
+          file_path?: string
+          file_type?: string
+          file_url?: string | null
+          format_hash?: string | null
+          id?: string
+          invoice_date?: string | null
+          invoice_number?: string | null
+          is_duplicate?: boolean | null
+          raw_extracted_json?: Json | null
+          raw_extracted_text?: string | null
+          status?: string
+          subtotal?: number | null
+          tax_amount?: number | null
+          total_amount?: number | null
+          updated_at?: string
+          user_id?: string
+          vendor_name?: string | null
+          vendor_normalized?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invoices_duplicate_of_fkey"
+            columns: ["duplicate_of"]
+            isOneToOne: false
+            referencedRelation: "invoices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
